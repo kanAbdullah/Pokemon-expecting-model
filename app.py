@@ -6,6 +6,7 @@ import pandas as pd
 import base64
 import uvicorn
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 import os
 
@@ -14,6 +15,14 @@ HF_TOKEN = os.getenv("HF_TOKEN")
 MODEL_URL = "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell"
 
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 model = joblib.load("model/pokemon_model.pkl")
 
