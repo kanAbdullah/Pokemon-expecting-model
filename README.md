@@ -1,4 +1,4 @@
-##Pokémon Legendary Predictor
+## Pokémon Legendary Predictor
 A machine learning web app that predicts whether a Pokémon is Legendary based on its base stats.
 
 The model uses engineered features on top of the raw stats:
