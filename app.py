@@ -4,9 +4,10 @@ import requests
 import joblib
 import pandas as pd
 import base64
+import uvicorn
+from dotenv import load_dotenv
 
 import os
-from dotenv import load_dotenv
 
 load_dotenv()
 HF_TOKEN = os.getenv("HF_TOKEN")
@@ -98,3 +99,7 @@ def generate_image(prompt):
 
     except Exception as e:
         return None, str(e)
+    
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
