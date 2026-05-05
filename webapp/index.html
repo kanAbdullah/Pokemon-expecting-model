@@ -368,7 +368,7 @@
   <h1>Pokémon <span>Legendary</span> Predictor</h1>
   <div class="endpoint-bar">
     <label>API Endpoint</label>
-    <input type="text" id="endpoint" value="http://localhost:8000/predict" placeholder="http://localhost:8000/predict">
+    <input type="text" id="endpoint" value="https://pokemon-expecting-model-production.up.railway.app/predict" placeholder="https://...railway.app/predict">
   </div>
 </header>
 
@@ -420,21 +420,21 @@
 
 <script>
 const STATS = [
-  { key: 'hp',          label: 'HP',         color: '#00d4c8', max: 255 },
-  { key: 'attack',      label: 'ATK',        color: '#00aaff', max: 255 },
-  { key: 'defense',     label: 'DEF',        color: '#1a6fff', max: 255 },
-  { key: 'sp_attack',   label: 'SP.ATK',     color: '#00d4c8', max: 255 },
-  { key: 'sp_defense',  label: 'SP.DEF',     color: '#00aaff', max: 255 },
-  { key: 'speed',       label: 'SPD',        color: '#1a6fff', max: 255 },
+  { key: 'hp',          label: 'HP',         color: '#00d4c8', max: 150 },
+  { key: 'attack',      label: 'ATK',        color: '#00aaff', max: 150 },
+  { key: 'defense',     label: 'DEF',        color: '#1a6fff', max: 150 },
+  { key: 'sp_attack',   label: 'SP.ATK',     color: '#00d4c8', max: 150 },
+  { key: 'sp_defense',  label: 'SP.DEF',     color: '#00aaff', max: 150 },
+  { key: 'speed',       label: 'SPD',        color: '#1a6fff', max: 150 },
 ];
 
 const defaults = { hp: 120, attack: 150, defense: 120, sp_attack: 150, sp_defense: 120, speed: 130 };
 
 function buildArc(pct, color) {
   const cx = 60, cy = 60, r = 52;
-  const startAngle = 210, endAngle = 330;
-  const totalDeg = (360 - startAngle + endAngle);
-  const fillDeg = totalDeg * pct;
+  const startAngle = 135, endAngle = 45;
+  const totalDeg = 270;
+  const fillDeg = Math.min(totalDeg * pct, totalDeg - 0.01);
   const toRad = d => (d - 90) * Math.PI / 180;
   function arc(startDeg, sweepDeg) {
     const s = toRad(startDeg), e = toRad(startDeg + sweepDeg);
